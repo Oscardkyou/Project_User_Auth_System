@@ -1,2 +1,8 @@
+# Virtual environment
+venv/
+.VSCode/
+.idea/
+__pycache__/
+
+# Environment variables
 .env
-venv
