@@ -1,14 +1,10 @@
-FROM python:3.11
+FROM python:3.12
 
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONBUFFERED 1
+ENV APP_HOME /app
 
-WORKDIR /Lorby
-COPY poetry.lock pyproject.toml /Lorby/
-RUN pip install -U pip && \
-    pip install poetry && \
-    poetry config virtualenvs.create false && \
-    poetry install
-COPY . ./
-COPY ../.env ./.env
-EXPOSE 8000
+WORKDIR $APP_HOME
+
+COPY ./requirements.txt .
+RUN pip install -r requirements.txt
+
+COPY . .
